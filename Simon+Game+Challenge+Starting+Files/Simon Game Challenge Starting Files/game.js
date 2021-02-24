@@ -1,18 +1,22 @@
-//document.getElementsByClassName(".btn").addEventListener("click", function() {
-  //  alert(+ );
-//});
-
+let level = [0];
 
 
 
 let buttonColors = ["red", "blue", "green" , "yellow"];
-
 let gamePattern =[];
-let userChosenColor = [];
 let userClickedPattern = [];
   
-    
+// detects the button clicked and logs it into the userClickedPattern Array  
+$(".btn").click( function () {
+   let userChosenColor = $(this).attr("id");
+    userClickedPattern.push(userChosenColor);
+    console.log(userClickedPattern);
+    playSound(userChosenColor);
+     
+}) 
 
+
+//This function creates a random color and then pushed into gamePattern empyty array. 
 function nextSequence() {
     let randomNumber= Math.floor(Math.random() * buttonColors.length);
     let randomChooseColor = buttonColors[randomNumber];
@@ -22,19 +26,18 @@ function nextSequence() {
 
     var audio = new Audio ("sounds/" + randomChooseColor + ".mp3" );
     audio.play();  
-
- // $("#" + randomChooseColor).on("click", function() {
-  //$("." + randomChooseColor).fadeOut(100).fadeIn(100);
-  //document.addEventListener("keydown" , function (){
-
   }
+// funciton to play sound when clicked 
+
+  function playSound(name) {
+   $("#" + name).fadeOut(100).fadeIn(100); 
+   var color = new Audio ("sounds/" + name + ".mp3" );
+   color.play();
+     
+ }
+ 
+
+  
+
   nextSequence();
-
- let userChosenColor = $(".btn").on("click", function () {
-    $("this").attr("id");
- }) 
-
-
-
-
 
